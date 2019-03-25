@@ -19,7 +19,7 @@ public class SendApplicationTest {
     @DisplayName("Can send successfully correct application")
     public void canSendApplication() {
         // Setting the web driver location property
-        System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDrivers\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\test\\webdrivers\\chromedriver.exe");
         //Creating new chrome driver instance
         driver = new ChromeDriver();
         //Maximizing browser window
