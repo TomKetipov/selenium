@@ -20,12 +20,13 @@ public class SendApplicationTest {
     public void canSendApplication() {
         // Setting the web driver location property
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium WebDrivers\\chromedriver_win32\\chromedriver.exe");
+        //Creating new chrome driver instance
+        driver = new ChromeDriver();
         //Maximizing browser window
         driver.manage().window().maximize();
         //Setting implicit wait for elements
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //Creating new chrome driver instance
-        driver = new ChromeDriver();
+        driver.manage().deleteAllCookies();
         //Navigating to specific site URL
         driver.get("https://lab08.com/careers/junior-quality-assurance-2/");
         //Initializing accept cookie web element
@@ -34,6 +35,7 @@ public class SendApplicationTest {
         acceptCookieButton.click();
         //Initializing password field web element
         WebElement passwordField = driver.findElement(By.id("pwbox-967"));
+        scrollDownToElement(passwordField);
         //Clicking inside password field
         passwordField.click();
         //Typing password
@@ -69,7 +71,7 @@ public class SendApplicationTest {
     }
 
     @AfterAll
-    public static void afterAll(){
+    public static void afterAll() {
         //Closing the browser instance
         driver.quit();
     }
@@ -104,15 +106,6 @@ public class SendApplicationTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return foundElementAfterWait;
 
-    }
-
-
-    private static void waitSeconds(int seconds) {
-        try {
-            Thread.sleep(seconds * 1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
 }
