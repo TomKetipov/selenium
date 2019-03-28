@@ -1,14 +1,11 @@
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +13,6 @@ public class SendApplicationTest {
     private static WebDriver driver;
 
     @Test
-    @DisplayName("Can send successfully correct application")
     public void canSendApplication() {
         // Setting the web driver location property
         System.setProperty("webdriver.chrome.driver", "src\\test\\webdrivers\\chromedriver.exe");
@@ -91,21 +87,6 @@ public class SendApplicationTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Waits for a specified element to be visible to work with it for a specified time frame
-     *
-     * @param elementToBeVisible
-     * @return
-     */
-    protected static WebElement waitForElementVisibility(WebElement elementToBeVisible) {
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 25);
-        WebElement foundElementAfterWait = wait.until(ExpectedConditions.visibilityOf(elementToBeVisible));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        return foundElementAfterWait;
-
     }
 
 }
